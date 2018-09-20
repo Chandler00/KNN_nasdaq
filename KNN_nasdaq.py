@@ -12,12 +12,12 @@ import pandas as pd
 from datetime import datetime
 import matplotlib.pyplot as plt
 from scipy.spatial import distance
+import seaborn as sns
 from sklearn import preprocessing
 from sklearn.neighbors import LSHForest
 from sklearn.neighbors import KDTree
 from sklearn.neighbors import BallTree
 from sklearn.neighbors import KNeighborsClassifier
-import seaborn as sns
 
 #%% load data, preprocessing, normalization
 
@@ -61,12 +61,22 @@ class stock_analysis:
         plt.figure(figsize=(16, 16))
         corr_map = sns.heatmap(corr_top, xticklabels=corr_top.columns, yticklabels=corr_top.columns, annot=True)
         figure = corr_map.get_figure()    
-        figure.savefig(r'C:\Users\s1883483\Desktop\Advanced analytics projects\coding cafe\KNN for Stock price mockup\stock_corr.png', dpi=800)
+        figure.savefig(r'C:\Users\s1883483\Desktop\Advanced analytics projects\coding cafe\KNN output\stock_corr.png', dpi=800)
+        
+
+
+# define KNN algorithms for use
+
+class KNN_algorithms:
+    
+    def __init__(self, KNN_alg):
+        self.KNN_alg = KNN_alg
+        
         
         
 #%%
 # using APPL.US stock as sample to check correlation heat map
-test = stock_analysis(stock_price_trend, "2017-01-01", "2018-01-01", "AAPL.US", 20)
+test = stock_analysis(normalize_stock(stock_price), "2017-01-01", "2018-01-01", "AAPL.US", 20)
 test.plot_corr()
 
 #%%
