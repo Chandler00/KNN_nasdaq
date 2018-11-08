@@ -65,12 +65,19 @@ class stock_analysis:
         
 
 
-# define KNN algorithms for use
+# define KNN algorithms for use. please use algorithms from {‘auto’, ‘ball_tree’, ‘kd_tree’, ‘brute’}
 
 class KNN_algorithms:
     
     def __init__(self, KNN_alg):
         self.KNN_alg = KNN_alg
+        
+    def run_alg(self):
+        self
+    
+    def set_
+    
+    def run_kdtree(self):
         
         
         
@@ -79,4 +86,17 @@ class KNN_algorithms:
 test = stock_analysis(normalize_stock(stock_price), "2017-01-01", "2018-01-01", "AAPL.US", 20)
 test.plot_corr()
 
-#%%
+#%% eculidian distance
+from sklearn.metrics.pairwise import euclidean_distances
+
+def distance_cal(tar_equity, top_k, stock_df):
+    
+    stock = normalize_stock(stock_df)
+    target = stock_price.values.tolist()
+    target1= [stock_price.T[tar_equity].tolist()]
+    stock['distance'] = euclidean_distances(target, target1)
+    stock_sorted = stock.sort_values('distance')
+    
+    return stock_sorted.head(10)
+    
+    
